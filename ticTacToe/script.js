@@ -72,20 +72,21 @@ function checkWinner(){
             colorChange(document.getElementById('b'+i+'0'),document.getElementById('b'+i+'1'),document.getElementById('b'+i+'2'));
             winner = board[i][0];
         }
-        if(board[0][i] === board[1][i] && board[1][i] === board[2][i] && board[0][i] !== ''){
+        else if(board[0][i] === board[1][i] && board[1][i] === board[2][i] && board[0][i] !== ''){
             colorChange(document.getElementById('b0'+i),document.getElementById('b1'+i),document.getElementById('b2'+i));
             winner = board[0][i];
         }
     }
-    if(board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] !== ''){
-        colorChange(document.getElementById('b00'),document.getElementById('b11'),document.getElementById('b22'));
-        winner = board[0][0];
+    if (winner == "notYet"){
+        if(board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] !== ''){
+            colorChange(document.getElementById('b00'),document.getElementById('b11'),document.getElementById('b22'));
+            winner = board[0][0];
+        }
+        else if(board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[0][2] !== ''){
+            colorChange(document.getElementById('b02'),document.getElementById('b11'),document.getElementById('b20'));
+            winner = board[0][2];
+        }
     }
-    if(board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[0][2] !== ''){
-        colorChange(document.getElementById('b02'),document.getElementById('b11'),document.getElementById('b20'));
-        winner = board[0][2];
-    }
-
     if(winner !== "notYet"){
         result.style = "visibility: visible";
         turn.style = "visibility: hidden";
